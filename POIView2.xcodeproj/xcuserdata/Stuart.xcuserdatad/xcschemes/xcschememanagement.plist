@@ -7,7 +7,30 @@
 		<key>POIView2 Watch App.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>POIView2.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
 			<integer>0</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>17BB7BB9308FBBF0003F58C2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>17BB7BBF308FBBF1003F58C2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>17BB7BF0308FBBF1003F58C2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>

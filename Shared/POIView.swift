@@ -36,6 +36,18 @@ struct POIView: View
     let RingColor: Color
     let CardinalColor: Color
     let CenterColor: Color
+    ///Scales the ring labels' type with the rest of the radar (1 on the watch).
+    var FontScale: Double = 1.0
+    ///How much larger than the standard caption size the N, E, S and W are drawn.
+    var CardinalScale: Double = 1.1
+    ///True to keep every marker inside the outer ring. False lets markers beyond the range be drawn outside it, moving with the zoom.
+    var ClampsToRange: Bool = true
+    ///True to cut off whatever is drawn outside this view's own area (markers outside the outer ring can reach far past the screen).
+    var ClipsToView: Bool = false
+    ///Weight of the cardinal letters; bold on the watch, heavier on the iPhone.
+    var CardinalWeight: Font.Weight = .bold
+    ///The size of the tap layer, to find the ring center in a tap.
+    @State private var TapSize = CGSize.zero
     
     ///Angle in degrees, clockwise from up (0 is due north at the top of the screen).
     ///Turning the watch clockwise moves north counter-clockwise on screen.
@@ -53,9 +65,8 @@ struct POIView: View
     ///Offset from the ring center for a POI when north is straight up; the dial rotation turns it to the compass.
     func MarkerOffset(For Item: POIFinder.VisiblePOI) -> CGSize
     {
-        let Ratio = min(Item.Distance / RangeDistance, 1.0)
-        let Angle = Item.Bearing * .pi / 180
-        return CGSize(width: PlotRadius * Ratio * sin(Angle), height: PlotRadius * Ratio * cos(Angle) * -1)
+        return RadarDeclutter.Position(Distance: Item.Distance, Bearing: Item.Bearing, RangeDistance: RangeDistance,
+                                       PlotRadius: PlotRadius, ClampsToRange: ClampsToRange)
     }
 
     ///Rotates a point clockwise on screen by Degrees (y grows downward).
@@ -94,9 +105,9 @@ struct POIView: View
             {
                 index in
                 Text(DistanceFormat.Short(Meters: RangeDistance * Double(index) / RingCount))
-                    .font(.system(size: 9))
+                    .font(.system(size: 9 * FontScale))
                     .foregroundStyle(RingLabelColor)
-                    .offset(y: (Gap * Double(index) / 2) * -1 + 8)
+                    .offset(y: (Gap * Double(index) / 2) * -1 + 8 * FontScale)
             }
             ForEach(1 ... Int(RingCount), id: \.self)
             {
@@ -115,7 +126,9 @@ struct POIView: View
                     //offset doesn't move the layout frame, so the center anchor is the ring center.
                     Text(Cardinal.Letter)
                         .font(.caption2)
-                        .bold()
+                        .fontWeight(CardinalWeight)
+                        //Grows with FontScale so the letters stay in proportion to the rings on a bigger screen.
+                        .scaleEffect(CardinalScale * FontScale)
                         .foregroundStyle(CardinalColor)
                         .offset(y: LabelRadius * -1)
                         .rotationEffect(.degrees(Cardinal.Angle))
@@ -135,21 +148,48 @@ struct POIView: View
             }
             .rotationEffect(.degrees(NorthAngle))
             LocationStar(Size: IconSize, StarColor: StarColor)
-            //Transparent tap layer centered on the rings; its local origin is the top-left, so subtract the center.
+            //Transparent tap layer over the whole view (markers can lie outside the rings); its local origin is the top-left, so
+            //subtract its center, which is the ring center.
             Color.clear
-                .frame(width: PlotRadius * 2 + IconSize * 2, height: PlotRadius * 2 + IconSize * 2)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .contentShape(.rect)
+                .onGeometryChange(for: CGSize.self)
+                {
+                    $0.size
+                }
+                action:
+                {
+                    TapSize = $0
+                }
                 .gesture(SpatialTapGesture().onEnded
                 {
                     Tap in
-                    let Half = PlotRadius + IconSize
-                    OnSelect(MarkerNear(Tap: CGSize(width: Tap.location.x - Half, height: Tap.location.y - Half)))
+                    OnSelect(MarkerNear(Tap: CGSize(width: Tap.location.x - TapSize.width / 2, height: Tap.location.y - TapSize.height / 2)))
                 })
         }
         .padding()
         //Without this the view is only as wide as the rings and the background stops there.
         .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .modifier(ClipToView(Enabled: ClipsToView))
         .background(BackgroundColor.ignoresSafeArea())
+    }
+}
+
+///Cuts off drawing outside the view's own frame, when enabled. The background is added after this, so it still fills to the screen edges.
+struct ClipToView: ViewModifier
+{
+    let Enabled: Bool
+
+    func body(content: Content) -> some View
+    {
+        if Enabled
+        {
+            content.clipped()
+        }
+        else
+        {
+            content
+        }
     }
 }
 

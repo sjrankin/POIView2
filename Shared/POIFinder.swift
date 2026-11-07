@@ -26,13 +26,13 @@ struct POIFinder
         }
     }
 
-    ///All POIs no farther than MaxDistance meters from Location, farthest first so the nearest are drawn on top.
-    static func POIs(Near Location: CLLocation, MaxDistance: Double) -> [VisiblePOI]
+    ///The places in Places no farther than MaxDistance meters from Location, farthest first so the nearest are drawn on top.
+    static func POIs(In Places: [POI], Near Location: CLLocation, MaxDistance: Double) -> [VisiblePOI]
     {
-        let Found: [VisiblePOI] = NorthernCaliforniaData.AllPOIs.compactMap
+        let Found: [VisiblePOI] = Places.compactMap
         {
             Item in
-            let Target = CLLocation(latitude: Item.Coordinate.latitude, longitude: Item.Coordinate.longitude)
+            let Target = CLLocation(latitude: Item.Latitude, longitude: Item.Longitude)
             let Distance = Location.distance(from: Target)
             if Distance > MaxDistance
             {

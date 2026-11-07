@@ -18,6 +18,13 @@
 			remoteGlobalIDString = 17BB7BBF308FBBF1003F58C2;
 			remoteInfo = "POIView2 Watch App";
 		};
+		17BB7BF9308FBBF1003F58C2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 17BB7BB4308FBBF0003F58C2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 17BB7BB9308FBBF0003F58C2;
+			remoteInfo = POIView2;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -35,12 +42,28 @@
 /* Begin PBXFileReference section */
 		17BB7BBA308FBBF1003F58C2 /* POIView2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = POIView2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17BB7BC0308FBBF1003F58C2 /* POIView2 Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "POIView2 Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		17BB7BF1308FBBF1003F58C2 /* POIView2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = POIView2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		17BB7BC4308FBBF1003F58C2 /* POIView2 Watch App */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = "POIView2 Watch App";
+			sourceTree = "<group>";
+		};
+		17BB7BE0308FBBF1003F58C2 /* Shared */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		17BB7BE1308FBBF1003F58C2 /* POIView2 */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = POIView2;
+			sourceTree = "<group>";
+		};
+		17BB7BF2308FBBF1003F58C2 /* POIView2Tests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = POIView2Tests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -51,13 +74,26 @@
 			files = (
 			);
 		};
+		17BB7BE3308FBBF1003F58C2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			files = (
+			);
+		};
+		17BB7BF4308FBBF1003F58C2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			files = (
+			);
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		17BB7BB3308FBBF0003F58C2 = {
 			isa = PBXGroup;
 			children = (
+				17BB7BE1308FBBF1003F58C2 /* POIView2 */,
 				17BB7BC4308FBBF1003F58C2 /* POIView2 Watch App */,
+				17BB7BE0308FBBF1003F58C2 /* Shared */,
+				17BB7BF2308FBBF1003F58C2 /* POIView2Tests */,
 				17BB7BBB308FBBF1003F58C2 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -67,6 +103,7 @@
 			children = (
 				17BB7BBA308FBBF1003F58C2 /* POIView2.app */,
 				17BB7BC0308FBBF1003F58C2 /* POIView2 Watch App.app */,
+				17BB7BF1308FBBF1003F58C2 /* POIView2Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -78,6 +115,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 17BB7BD1308FBBF1003F58C2 /* Build configuration list for PBXNativeTarget "POIView2" */;
 			buildPhases = (
+				17BB7BE2308FBBF1003F58C2 /* Sources */,
+				17BB7BE3308FBBF1003F58C2 /* Frameworks */,
 				17BB7BB8308FBBF0003F58C2 /* Resources */,
 				17BB7BD0308FBBF1003F58C2 /* Embed Watch Content */,
 			);
@@ -86,10 +125,14 @@
 			dependencies = (
 				17BB7BC3308FBBF1003F58C2 /* PBXTargetDependency */,
 			);
+			fileSystemSynchronizedGroups = (
+				17BB7BE0308FBBF1003F58C2 /* Shared */,
+				17BB7BE1308FBBF1003F58C2 /* POIView2 */,
+			);
 			name = POIView2;
 			productName = POIView2;
 			productReference = 17BB7BBA308FBBF1003F58C2 /* POIView2.app */;
-			productType = "com.apple.product-type.application.watchapp2-container";
+			productType = "com.apple.product-type.application";
 		};
 		17BB7BBF308FBBF1003F58C2 /* POIView2 Watch App */ = {
 			isa = PBXNativeTarget;
@@ -103,11 +146,33 @@
 			);
 			fileSystemSynchronizedGroups = (
 				17BB7BC4308FBBF1003F58C2 /* POIView2 Watch App */,
+				17BB7BE0308FBBF1003F58C2 /* Shared */,
 			);
 			name = "POIView2 Watch App";
 			productName = "POIView2 Watch App";
 			productReference = 17BB7BC0308FBBF1003F58C2 /* POIView2 Watch App.app */;
 			productType = "com.apple.product-type.application";
+		};
+		17BB7BF0308FBBF1003F58C2 /* POIView2Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 17BB7BF6308FBBF1003F58C2 /* Build configuration list for PBXNativeTarget "POIView2Tests" */;
+			buildPhases = (
+				17BB7BF3308FBBF1003F58C2 /* Sources */,
+				17BB7BF4308FBBF1003F58C2 /* Frameworks */,
+				17BB7BF5308FBBF1003F58C2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				17BB7BFA308FBBF1003F58C2 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				17BB7BF2308FBBF1003F58C2 /* POIView2Tests */,
+			);
+			name = POIView2Tests;
+			productName = POIView2Tests;
+			productReference = 17BB7BF1308FBBF1003F58C2 /* POIView2Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -124,6 +189,10 @@
 					};
 					17BB7BBF308FBBF1003F58C2 = {
 						CreatedOnToolsVersion = 27.0;
+					};
+					17BB7BF0308FBBF1003F58C2 = {
+						CreatedOnToolsVersion = 27.0;
+						TestTargetID = 17BB7BB9308FBBF0003F58C2;
 					};
 				};
 			};
@@ -143,6 +212,7 @@
 			targets = (
 				17BB7BB9308FBBF0003F58C2 /* POIView2 */,
 				17BB7BBF308FBBF1003F58C2 /* POIView2 Watch App */,
+				17BB7BF0308FBBF1003F58C2 /* POIView2Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -158,10 +228,25 @@
 			files = (
 			);
 		};
+		17BB7BF5308FBBF1003F58C2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			files = (
+			);
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		17BB7BBC308FBBF1003F58C2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			files = (
+			);
+		};
+		17BB7BE2308FBBF1003F58C2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			files = (
+			);
+		};
+		17BB7BF3308FBBF1003F58C2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			files = (
 			);
@@ -173,6 +258,11 @@
 			isa = PBXTargetDependency;
 			target = 17BB7BBF308FBBF1003F58C2 /* POIView2 Watch App */;
 			targetProxy = 17BB7BC2308FBBF1003F58C2 /* PBXContainerItemProxy */;
+		};
+		17BB7BFA308FBBF1003F58C2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 17BB7BB9308FBBF0003F58C2 /* POIView2 */;
+			targetProxy = 17BB7BF9308FBBF1003F58C2 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -306,7 +396,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = POIView2;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Used to find true north for the compass display.";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKWatchOnly = YES;
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = Iroiro.POIView2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -340,7 +430,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = POIView2;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Used to find true north for the compass display.";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKWatchOnly = YES;
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = Iroiro.POIView2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -365,36 +455,115 @@
 		17BB7BD2308FBBF1003F58C2 /* Debug configuration for PBXNativeTarget "POIView2" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4BB235M4GL;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = POIView2;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Used to show the compass and radar, and to fill in the location of a new place.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Iroiro.POIView2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		17BB7BD3308FBBF1003F58C2 /* Release configuration for PBXNativeTarget "POIView2" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4BB235M4GL;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = POIView2;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Used to show the compass and radar, and to fill in the location of a new place.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Iroiro.POIView2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		17BB7BF7308FBBF1003F58C2 /* Debug configuration for PBXNativeTarget "POIView2Tests" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4BB235M4GL;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Iroiro.POIView2Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/POIView2.app/POIView2";
+			};
+			name = Debug;
+		};
+		17BB7BF8308FBBF1003F58C2 /* Release configuration for PBXNativeTarget "POIView2Tests" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4BB235M4GL;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Iroiro.POIView2Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/POIView2.app/POIView2";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -423,6 +592,14 @@
 			buildConfigurations = (
 				17BB7BD2308FBBF1003F58C2 /* Debug configuration for PBXNativeTarget "POIView2" */,
 				17BB7BD3308FBBF1003F58C2 /* Release configuration for PBXNativeTarget "POIView2" */,
+			);
+			defaultConfigurationName = Release;
+		};
+		17BB7BF6308FBBF1003F58C2 /* Build configuration list for PBXNativeTarget "POIView2Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				17BB7BF7308FBBF1003F58C2 /* Debug configuration for PBXNativeTarget "POIView2Tests" */,
+				17BB7BF8308FBBF1003F58C2 /* Release configuration for PBXNativeTarget "POIView2Tests" */,
 			);
 			defaultConfigurationName = Release;
 		};

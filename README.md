@@ -3,12 +3,24 @@ Stuart Rankin\
 26 October 2026
 
 ## Summary
-Apple Watch version of HUDView/HUDView2. Apple Watch does not have a camera, so only the radar display is implemented.
+Apple Watch version of HUDView/HUDView2, with a companion iPhone app for entering places. Apple Watch does not have a camera, so only the radar display is implemented.
 
 <img src="Images/POIView2Test.gif" alt="Animation of POIView2 running on an Apple Watch.">\
 The image above is POIView2 running on my Apple Watch. I created the video by mirroring the Watch on my iPhone, then mirroring my iPhone on my Mac via QuickTime and recording the screen (for cropping purposes).
 
 I wanted to show points of interest on my watch and have it oriented in the proper direction.
+
+## iPhone Companion App
+POIView2 is now a watchOS app with a companion iPhone app (the iPhone app embeds the watch app, so installing one installs the other).
+
+- **Radar tab:** the same radar as the watch, larger, using the iPhone's own compass and location. Pinch or use the slider to zoom (the watch uses the Digital Crown).
+- **Places tab:** enter, edit and delete your own points of interest: a name, a type (city, mountain, park, ...), a latitude and longitude (or **Use My Current Location**), and optionally an elevation and a population. They appear on the radar on both devices alongside the built-in Northern California places.
+- **Sending to the watch:** every change on the iPhone is sent to the watch automatically using WatchConnectivity's application context, which always delivers the latest list, even if the watch app is not running when it is sent. The watch keeps its own copy, so the places are still there when the iPhone is not. **Send to Watch Now** resends the list. The iPhone is the only place places are edited; the built-in places are not editable.
+
+### Project layout
+- `Shared/` is compiled into both apps: the places (`POI`, `POIStore`), the radar drawing (`POIView`, `RadarContent`), the compass (`HeadingProvider`) and the iPhone-to-watch link (`WatchLink`).
+- `POIView2 Watch App/` holds only what is specific to the watch (the Digital Crown zoom and the app entry point).
+- `POIView2/` is the iPhone app. `POIView2Tests/` has unit tests (Swift Testing) for the place store, the editor's validation and the radar math; run them on an iPhone simulator.
 
 ## Code
 I created the framework for the UI and the code. I used Claude to finish the UI and implement the plotting code. I reused code from HUDViewUI for the points of interest.
